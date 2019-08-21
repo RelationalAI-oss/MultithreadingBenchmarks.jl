@@ -3,6 +3,15 @@ uuid = "95dfcc4a-c450-11e9-2039-9ba35aa0ffba"
 authors = ["Nathan Daly"]
 version = "0.1.0"
 
+[deps]
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+InteractiveUtils = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+TimerOutputs = "a759f4b9-e2f1-59dc-863e-4aeb61b1ea8f"
+
 [compat]
 julia = "1.3"
 

@@ -1,5 +1,5 @@
 module MultithreadingBenchmarks
 
-greet() = print("Hello World!")
+include("test_harness.jl")
 
 end # module
