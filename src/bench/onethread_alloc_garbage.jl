@@ -17,7 +17,7 @@ end
 # Allocate in a loop until anything is pushed into `signal` Channel.
 function allocate_in_background(signal::Channel, v)
     # Since there is
-    ALLOC_EVERY_N = Inf
+    ALLOC_EVERY_N = 2
     out = v
     i = 0
     while !isready(signal)
@@ -30,7 +30,8 @@ function allocate_in_background(signal::Channel, v)
         out_temp::typeof(v)
         out = out_temp
         i += 1
-        yield()  # We need this yield-point so this "background" task doesn't keep julia alive.
+        # TODO: But if we add this yield-point does it occupy the thread correctly?
+        #yield()  # We need this yield-point so this "background" task doesn't keep julia alive.
     end
     return out
 end

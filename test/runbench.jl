@@ -14,24 +14,25 @@ Sys.cpu_summary()
 
 const BENCHDIR = joinpath(dirname(pathof(MultithreadingBenchmarks)), "bench")
 
-const NUM_DATAPOINTS = 11  # Keep this odd, so we get a point at 50%
+const NUM_DATAPOINTS = 9  # Keep this odd, so we get a point at 50%
 
-# MultithreadingBenchmarks.perform_scaling_experiment(
-#     bench_file = "$BENCHDIR/simple_independent.jl",
-#     num_datapoints = NUM_DATAPOINTS,  # keep this odd, so we get a point at 50%
-#     nqueries = 1000,
-#     num_ops = 1_000_000_0,#00,
-#     plot_series_name = "1000 queries x 1e7 ops",
-#     )
+MultithreadingBenchmarks.perform_scaling_experiment(
+    bench_file = "$BENCHDIR/simple_independent.jl",
+    num_datapoints = NUM_DATAPOINTS,  # keep this odd, so we get a point at 50%
+    nqueries = 1000,
+    num_ops = 1_000_000_000,
+    plot_series_name = "1000 queries x 1e9 ops",
+    )
 
-#MultithreadingBenchmarks.perform_scaling_experiment(
-#    bench_file = "$BENCHDIR/all_tasks_allocating.jl",
-#    num_datapoints = 5,  # Use fewer datapoints since it's expensive and clear
-#    nqueries = 1000,
-#    num_ops = 1_000_000,
-#    plot_series_name = "all tasks alloc garbage: 1000 queries x 1e6 ops",
-#    )
+MultithreadingBenchmarks.perform_scaling_experiment(
+    bench_file = "$BENCHDIR/all_tasks_allocating.jl",
+    num_datapoints = 5,  # Use fewer datapoints since it's expensive and clear
+    nqueries = 1000,
+    num_ops = 1_000_000,
+    plot_series_name = "all tasks alloc garbage: 1000 queries x 1e6 ops",
+    )
 
+# TODO: This benchmark is still very experimental
 MultithreadingBenchmarks.perform_scaling_experiment(
     bench_file = "$BENCHDIR/onethread_alloc_garbage.jl",
     num_datapoints = NUM_DATAPOINTS,  # Unused -- we're setting it manually below:
