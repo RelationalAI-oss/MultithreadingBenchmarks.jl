@@ -150,12 +150,13 @@ function perform_scaling_experiment(;
     plot_basename = splitext(basename(bench_file))[1]
 
     println("plot results")
+    println("-- saving figures in $(pwd()) --")
     pp = plot_speedup(processed, plot_series_name)
-    savefig(pp, joinpath(@__DIR__, "$plot_basename-speedup_plot.png"))
+    savefig(pp, "$plot_basename-speedup_plot.png")
 
     ap = plot_abs_time(processed, plot_series_name)
-    savefig(ap, joinpath(@__DIR__, "$plot_basename-abs_time_plot.png"))
+    savefig(ap, "$plot_basename-abs_time_plot.png")
 
     tp = plot_thread_counts(results, plot_series_name)
-    savefig(tp, joinpath(@__DIR__, "$plot_basename-thread_counts.png"))
+    savefig(tp, "$plot_basename-thread_counts.png")
 end
