@@ -2,13 +2,12 @@
 language: julia
 os:
   - linux
-  - osx
 julia:
   - 1.3
-  - nightly
-matrix:
-  allow_failures:
-    - julia: nightly
-  fast_finish: true
+  #- nightly
+# matrix:
+#   allow_failures:
+#     - julia: nightly
+#   fast_finish: true
 notifications:
   email: false
