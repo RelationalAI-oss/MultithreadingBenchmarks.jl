@@ -19,6 +19,7 @@ function run_bench_file(file, nthreads, nqueries, query_size)
         "NUM_QUERIES" => nqueries,
         "QUERY_SIZE" => query_size,
     ) do
+         @assert Base.current_project() != nothing "Must run this benchmark w/ an active Julia Project.toml (and ideally Manifest.toml)!"
          lines = readlines(`$(Base.julia_cmd()) --project=$(Base.current_project()) $file`)
          return (;
              time_secs            = parse(Float64, lines[end-5]) / 1e9            ,
