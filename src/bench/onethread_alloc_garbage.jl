@@ -1,6 +1,6 @@
 #
 
-include("test_common.jl")
+include("../common.jl")
 
 function work(i, v, n)
     out = v

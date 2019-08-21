@@ -1,6 +1,6 @@
 # Simple parallelism test to measure scaling of completely independent tasks.
 
-include("test_common.jl")
+include("../common.jl")
 
 function work(i, v, n)  # For n=10000000, takes ~2ms
     out = v

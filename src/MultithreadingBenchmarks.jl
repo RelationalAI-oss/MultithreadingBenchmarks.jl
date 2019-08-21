@@ -1,5 +1,5 @@
 module MultithreadingBenchmarks
 
-include("test_harness.jl")
+include("bench_harness.jl")
 
 end # module
