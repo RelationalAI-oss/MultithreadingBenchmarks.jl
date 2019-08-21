@@ -40,7 +40,7 @@ MultithreadingBenchmarks.perform_scaling_experiment(
     # nthreads=1, so we use nthreads=2 instead. Effectively, all these values are 1 higher
     # than are actually being tested, so we effectively test from [1, NUM_CPUS-1].
     # (NOTE: that we then also need to subtract 1 from all the nthreads in the results)
-    nthreads_to_test = [2, Int.(round.(range(0, stop=NUM_CORES, length=NUM_DATAPOINTS)))[2:end]...],
+    nthreads_to_test = [2, Int.(round.(range(0, stop=MultithreadingBenchmarks.NUM_CORES, length=NUM_DATAPOINTS)))[2:end]...],
     # Subtract 1 from nthreads in result since 1 CPU is occupied allocating garbage.
     preprocess_results = results->(results.nthreads .-= 1; results),
 
