@@ -17,7 +17,7 @@ const DIR = dirname(pathof(MultithreadingBenchmarks))
 const NUM_DATAPOINTS = 11  # Keep this odd, so we get a point at 50%
 
 # MultithreadingBenchmarks.perform_scaling_experiment(
-#     bench_file = "$DIR/simple_parallelism.jl",
+#     bench_file = "$DIR/bench_parallelism_simple_independent.jl",
 #     num_datapoints = NUM_DATAPOINTS,  # keep this odd, so we get a point at 50%
 #     nqueries = 1000,
 #     num_ops = 1_000_000_0,#00,
@@ -25,7 +25,7 @@ const NUM_DATAPOINTS = 11  # Keep this odd, so we get a point at 50%
 #     )
 
 MultithreadingBenchmarks.perform_scaling_experiment(
-    bench_file = "$DIR/allocating_parallelism.jl",
+    bench_file = "$DIR/bench_parallelism_allocating.jl",
     num_datapoints = 5,  # Use fewer datapoints since it's expensive and clear
     nqueries = 1000,
     num_ops = 1_000_000,
@@ -33,7 +33,7 @@ MultithreadingBenchmarks.perform_scaling_experiment(
     )
 
 #MultithreadingBenchmarks.perform_scaling_experiment(
-#    bench_file = "$DIR/parallelism_onethread_garbage.jl",
+#    bench_file = "$DIR/bench_parallelism_onethread_garbage.jl",
 #    num_datapoints = NUM_DATAPOINTS,  # Unused -- we're setting it manually below:
 #    # Manually set the nthreads to test -- Skip nthreads=1 because one thread is occupied
 #    # allocating garbage and won't participate in the test. The test would deadlike for
