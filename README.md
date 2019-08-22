@@ -5,7 +5,7 @@
 ## Instructions for Running the Benchmark
 The benchmark suite is set up to run via `Pkg.test()`:
 ```julia
-(multithreading) pkg> test
+(MultithreadingBenchmarks) pkg> test
 ```
 The testfile simply invokes `test/runbench.jl` which can also be invoked manually.
 
