@@ -1,15 +1,12 @@
 ccall((:init_thread_pool, "build/cpp-native-threads.dylib"), Cvoid, ())
 
-mutable struct Response{T}
-    out::T
-end
 function cppcall(x::Int)
-    response = Response{Int}(2)  # heap allocated (mutable struct)
+    response = Ref(x) # heap-allocated
     ch = Channel{Int}(0)
-    t = Task(()->put!(ch, response.out))
+    t = Task(()->put!(ch, response[]))
     t.sticky = false
     ccall((:enqueue, "build/cpp-native-threads.dylib"), Cvoid,
-          (Cint, Any, Csize_t, Any), x, response, sizeof(response), t)
+          (Cint, Any, Csize_t, Any), x, response, sizeof(eltype(response)), t)
     ch
 end
 
