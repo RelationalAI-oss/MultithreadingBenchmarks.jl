@@ -18,6 +18,7 @@ end
 function allocate_in_background(signal::Channel, v)
     # Since there is
     ALLOC_EVERY_N = 2
+    GC_EVERY_N = 1024
     out = v
     i = 0
     while !isready(signal)
@@ -30,6 +31,12 @@ function allocate_in_background(signal::Channel, v)
         out_temp::typeof(v)
         out = out_temp
         i += 1
+
+        # Manually trigger the GC every so often, since it wasn't running on its own
+        if (i % GC_EVERY_N == 0)
+            GC.gc()
+        end
+
         # TODO: But if we add this yield-point does it occupy the thread correctly?
         #yield()  # We need this yield-point so this "background" task doesn't keep julia alive.
     end
