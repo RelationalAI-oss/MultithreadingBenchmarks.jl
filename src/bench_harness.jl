@@ -122,6 +122,19 @@ function plot_thread_counts(results, label)
         bottom_margin=50px
     )
 end
+function plot_latencies(results, label)
+    nqueries = length(results.query_latencies_secs[1])
+    xticks_labels = 0:0.10:1
+    Plots.plot(sort.(results.query_latencies_secs),
+        xticks = (xticks_labels * nqueries, ["$(Int(round(x*100)))%" for x in xticks_labels]),
+        xlabel = "Percentile",
+        yscale = :log10,
+        labels = ["$t threads" for t in results.nthreads],
+        title = "Query latencies (secs, log): \"$label\"",
+        left_margin=50px,
+        bottom_margin=50px
+    )
+end
 
 function perform_scaling_experiment(;
         bench_file, nqueries, num_ops, plot_series_name, num_datapoints,
@@ -144,8 +157,8 @@ function perform_scaling_experiment(;
                            preprocess_results);
 
     println("run benchmark")
-    results,processed = bench_nthreads_scaling(bench_file, nqueries,  num_ops,
-                                               nthreads_to_test, preprocess_results)
+    global results,processed = bench_nthreads_scaling(bench_file, nqueries,  num_ops,
+                                                      nthreads_to_test, preprocess_results)
 
     plot_basename = splitext(basename(bench_file))[1]
 
@@ -159,4 +172,7 @@ function perform_scaling_experiment(;
 
     tp = plot_thread_counts(results, plot_series_name)
     savefig(tp, "$plot_basename-thread_counts.png")
+
+    lp = plot_latencies(results, plot_series_name)
+    savefig(lp, "$plot_basename-query_latencies.png")
 end
