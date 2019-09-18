@@ -2,8 +2,10 @@ import Base.Threads: @spawn
 using BenchmarkTools
 using TimerOutputs
 
-const QUERY_SIZE = parse(Int, ENV["QUERY_SIZE"])
-const NUM_QUERIES = parse(Int, ENV["NUM_QUERIES"])
+# THESE ARE ONLY VALID INSIDE THE BENCHMARK
+query_size() = parse(Int, ENV["QUERY_SIZE"])
+num_queries() = parse(Int, ENV["NUM_QUERIES"])
+
 
 function main(f, n, N, thread_counts, query_latencies_secs)
     vs = fill(0, N)
@@ -25,8 +27,8 @@ function main(f, n, N, thread_counts, query_latencies_secs)
 end
 
 function measure_work(work)
-    n = QUERY_SIZE
-    N = NUM_QUERIES
+    n = query_size()
+    N = num_queries()
 
     # Output params (since `@benchmark` hides the return values)
     thread_counts = fill(0, Threads.nthreads())
