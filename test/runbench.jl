@@ -12,7 +12,7 @@ Sys.cpu_summary()
 
 # ---------------------------------------------------------------
 
-const BENCHDIR = joinpath(dirname(pathof(MultithreadingBenchmarks)), "bench")
+const BENCHDIR = joinpath(dirname(pathof(MultithreadingBenchmarks)), "..", "bench")
 
 const NUM_DATAPOINTS = 11  # Keep this odd, so we get a point at 50%
 

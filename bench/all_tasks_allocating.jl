@@ -1,6 +1,6 @@
 #
 
-include("../common.jl")
+include("../src/common.jl")
 
 @noinline mul_barrier(a,b) = a*b
 @noinline mul_barrier(a::Vector,b) = a[1]*b
