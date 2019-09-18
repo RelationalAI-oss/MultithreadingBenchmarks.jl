@@ -1,6 +1,6 @@
 # Simple parallelism test to measure scaling of completely independent tasks.
 
-include("../src/common.jl")
+using MultithreadingBenchmarks
 
 function work(i, v, n)  # For n=10000000, takes ~2ms
     out = v
@@ -10,4 +10,4 @@ function work(i, v, n)  # For n=10000000, takes ~2ms
     out
 end
 
-measure_work()
+MultithreadingBenchmarks.measure_work(work)

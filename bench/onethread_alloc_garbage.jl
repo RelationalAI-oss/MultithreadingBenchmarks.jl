@@ -1,6 +1,6 @@
 #
 
-include("../src/common.jl")
+using MultithreadingBenchmarks
 
 function work(i, v, n)
     out = v
@@ -49,7 +49,7 @@ signal = Channel(1)
 t = Threads.@spawn allocate_in_background(signal, 2)
 # ----------------------------
 
-measure_work()
+MultithreadingBenchmarks.measure_work(work)
 
 # ------------------------
 put!(signal, 0)

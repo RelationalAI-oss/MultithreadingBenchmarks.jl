@@ -1,6 +1,6 @@
 #
 
-include("../src/common.jl")
+using MultithreadingBenchmarks
 
 function work(i, v, n)
     out = v
@@ -21,4 +21,4 @@ end
 #    Threads.@spawn work(1, 2, 100)
 #end
 
-measure_work()
+MultithreadingBenchmarks.measure_work(work)
