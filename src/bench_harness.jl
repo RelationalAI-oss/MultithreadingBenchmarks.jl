@@ -5,8 +5,8 @@
 # To change which benchmark is being run, set the BENCH_FILE constant below.
 
 using DataFrames
-using Plots
-using Plots.PlotMeasures
+#using Plots
+#using Plots.PlotMeasures
 using Statistics
 
 # ----------------------------------------------------------------
@@ -80,6 +80,7 @@ function bench_nthreads_scaling(file, nqueries, query_size, all_nthreads, prepro
     return results, processed
 end
 
+# To run these, you must manually run `using Plots` locally, to avoid having Plots as a dependency...
 plot_speedup(args...) = plot_speedup!(plot(), args...)
 function plot_speedup!(p, processed, label)
     Plots.plot!(p, processed.nthreads, processed.speedup_factor,
