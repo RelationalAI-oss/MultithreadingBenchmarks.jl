@@ -80,7 +80,9 @@ function bench_nthreads_scaling(file, nqueries, query_size, all_nthreads, prepro
     return results, processed
 end
 
-# To run these, you must manually run `using Plots` locally, to avoid having Plots as a dependency...
+# To run these, you must manually run `use_plots()` locally, to avoid having Plots as a dependency...
+use_plots() = @eval using Plots
+
 plot_speedup(args...) = plot_speedup!(plot(), args...)
 function plot_speedup!(p, processed, label)
     Plots.plot!(p, processed.nthreads, processed.speedup_factor,
