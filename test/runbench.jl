@@ -32,15 +32,13 @@ MultithreadingBenchmarks.perform_scaling_experiment(
     plot_series_name = "all tasks alloc garbage: 1000 queries x 1e6 ops",
     )
 
-# TODO: This Benchmark is disabled because it fails (w/ exception) due to a julia bug:
-#    https://github.com/JuliaLang/julia/issues/33183 -- Re-enable once this is fixed.
-# MultithreadingBenchmarks.perform_scaling_experiment(
-#     bench_file = "$BENCHDIR/all_tasks_compiling.jl",
-#     num_datapoints = 5,  # Use fewer datapoints since it's expensive and clear
-#     nqueries = 5,
-#     num_ops = 1_0,
-#     plot_series_name = "all tasks alloc garbage: 5 queries x 1e1 ops",
-#     )
+MultithreadingBenchmarks.perform_scaling_experiment(
+     bench_file = "$BENCHDIR/all_tasks_compiling.jl",
+     num_datapoints = 5,  # Use fewer datapoints since it's expensive and clear
+     nqueries = 5,
+     num_ops = 1_0,
+     plot_series_name = "all tasks alloc garbage: 5 queries x 1e1 ops",
+     )
 
 # TODO: This benchmark is still very experimental
 MultithreadingBenchmarks.perform_scaling_experiment(
