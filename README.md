@@ -20,4 +20,3 @@ However, currently, _which experiments are run_ is configured in `test/runbench.
 
 The test should automatically scale to the number of cores on your machine, though you may want to edit the `const NUM_DATAPOINTS = 9` to be smaller if you have fewer cores.
 
-As of time of writing, commit bae621b has all the experiments enabled and configured.
